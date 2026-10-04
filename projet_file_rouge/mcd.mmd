@@ -1,0 +1,79 @@
+erDiagram
+    %% =========================================================================
+    %% MCD — Modèle Conceptuel de Données (Merise / ER Diagram)
+    %% Projet : Cabinet Médical / Téléconsultation
+    %% Entités : PATIENT, SPECIALITE, CONSULTATION, ORDONNANCE
+    %% Structure hiérarchique épurée sans boucle redondante
+    %% =========================================================================
+
+    PATIENT ||--o{ CONSULTATION : "effectue (0,N)/(1,1)"
+    SPECIALITE ||--o{ CONSULTATION : "concerne (0,N)/(1,1)"
+    CONSULTATION ||--o{ ORDONNANCE : "donne_lieu_a (0,N)/(1,1)"
+    PATIENT ||--o{ ORDONNANCE : "recoit (0,N)/(1,1)"
+    PATIENT ||--o{ CONSULTATION : "effectue"
+    SPECIALITE ||--o{ CONSULTATION : "concerne"
+    CONSULTATION ||--o{ ORDONNANCE : "donne_lieu_a"
+
+    PATIENT {
+        int id PK "Identifiant unique"
+        string nom "Nom de famille"
+        string nom "Nom"
+        string prenom "Prénom"
+        string email "Adresse email"
+        string telephone "Numéro de téléphone"
+        date date_naissance "Date de naissance"
+        string adresse "Adresse postale"
+        timestamp created_at "Date de création"
+        string email "Email"
+        string telephone "Téléphone"
+        date date_naissance "Date naissance"
+        string adresse "Adresse"
+        timestamp created_at "Date création"
+    }
+
+    SPECIALITE {
+        int id PK "Identifiant unique"
+        string nom "Nom unique de la spécialité"
+        string description "Description médicale"
+        string image "Chemin vers assets/images/"
+        timestamp created_at "Date de création"
+        string nom "Nom spécialité"
+        string description "Description"
+        string image "Chemin image"
+        timestamp created_at "Date création"
+    }
+
+    CONSULTATION {
+        int id PK "Identifiant unique"
+        int patient_id FK "Référence vers Patient"
+        int specialite_id FK "Référence vers Spécialité"
+        datetime date_consultation "Date et heure de la consultation"
+        string motif "Motif de consultation"
+        string statut "Statut: prevue / terminee / annulee"
+        timestamp created_at "Date de création"
+        int patient_id FK "FK Patient"
+        int specialite_id FK "FK Spécialité"
+        datetime date_consultation "Date heure"
+        string motif "Motif"
+        string statut "Statut"
+        timestamp created_at "Date création"
+    }
+
+    ORDONNANCE {
+        int id PK "Identifiant unique"
+        int consultation_id FK "Référence vers Consultation"
+        int patient_id FK "Référence vers Patient"
+        string medicament "Nom du médicament"
+        string posologie "Posologie prescrite"
+        string duree "Durée du traitement"
+        date date_prescription "Date de délivrance"
+        timestamp created_at "Date de création"
+        int consultation_id FK "FK Consultation"
+        int patient_id FK "FK Patient"
+        string medicament "Médicament"
+        string posologie "Posologie"
+        string duree "Durée"
+        date date_prescription "Date prescription"
+        timestamp created_at "Date création"
+    }
+

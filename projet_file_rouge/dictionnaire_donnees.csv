@@ -1,0 +1,29 @@
+Interface,Name,Signification,Type,Obligatoire,Calculé
+Patient,id,Identifiant unique du patient,INT AUTO_INCREMENT,Oui,Oui
+Patient,nom,Nom de famille du patient,VARCHAR(100),Oui,Non
+Patient,prenom,Prénom du patient,VARCHAR(100),Oui,Non
+Patient,email,Adresse email du patient,VARCHAR(150),Oui,Non
+Patient,telephone,Numéro de téléphone du patient,VARCHAR(20),Non,Non
+Patient,date_naissance,Date de naissance du patient,DATE,Non,Non
+Patient,adresse,Adresse postale du patient,VARCHAR(255),Non,Non
+Patient,created_at,Date de création de l'enregistrement,TIMESTAMP,Non,Oui
+Spécialité,id,Identifiant unique de la spécialité,INT AUTO_INCREMENT,Oui,Oui
+Spécialité,nom,Nom de la spécialité médicale,VARCHAR(100),Oui,Non
+Spécialité,description,Description de la spécialité,TEXT,Oui,Non
+Spécialité,image,Chemin du fichier image de la spécialité dans assets/images/,VARCHAR(255),Oui,Non
+Spécialité,created_at,Date de création de l'enregistrement,TIMESTAMP,Non,Oui
+Consultation,id,Identifiant unique de la consultation,INT AUTO_INCREMENT,Oui,Oui
+Consultation,patient_id,Référence vers le patient concerné,INT (FK -> Patient.id),Oui,Non
+Consultation,specialite_id,Référence vers la spécialité de la consultation,INT (FK -> Spécialité.id),Oui,Non
+Consultation,date_consultation,Date et heure prévues de la consultation,DATETIME,Oui,Non
+Consultation,motif,Motif de la consultation,VARCHAR(255),Oui,Non
+Consultation,statut,Statut de la consultation (prevue/terminee/annulee),VARCHAR(50),Oui,Non
+Consultation,created_at,Date de création de l'enregistrement,TIMESTAMP,Non,Oui
+Ordonnance,id,Identifiant unique de l'ordonnance,INT AUTO_INCREMENT,Oui,Oui
+Ordonnance,consultation_id,Référence vers la consultation liée,INT (FK -> Consultation.id),Oui,Non
+Ordonnance,patient_id,Référence vers le patient concerné,INT (FK -> Patient.id),Oui,Non
+Ordonnance,medicament,Nom du médicament prescrit,VARCHAR(255),Oui,Non
+Ordonnance,posologie,Posologie du médicament,VARCHAR(255),Oui,Non
+Ordonnance,duree,Durée du traitement,VARCHAR(100),Oui,Non
+Ordonnance,date_prescription,Date de prescription de l'ordonnance,DATE,Oui,Non
+Ordonnance,created_at,Date de création de l'enregistrement,TIMESTAMP,Non,Oui
