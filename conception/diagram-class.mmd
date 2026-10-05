@@ -1,0 +1,49 @@
+classDiagram
+    direction TB
+
+    class Patient {
+        -JsonStorage storage
+        +all() array
+        +find(id) array
+        +create(data) array
+        +update(id, data) array
+        +delete(id) void
+    }
+    class Specialite {
+        -JsonStorage storage
+        +all() array
+        +find(id) array
+        +create(data) array
+        +update(id, data) array
+        +delete(id) void
+    }
+    class Consultation {
+        -JsonStorage storage
+        +all() array
+        +find(id) array
+        +create(data) array
+        +update(id, data) array
+        +delete(id) void
+    }
+    class Ordonnance {
+        -JsonStorage storage
+        +all() array
+        +find(id) array
+        +create(data) array
+        +update(id, data) array
+        +delete(id) void
+    }
+    class JsonStorage {
+        -string file
+        +all() array
+        +save(rows) void
+        +nextId(field) int
+    }
+
+    Patient "1" --> "0..*" Consultation : possède
+    Specialite "1" --> "0..*" Consultation : classe
+    Consultation "1" --> "0..1" Ordonnance : prescrit
+    Patient ..> JsonStorage : utilise
+    Specialite ..> JsonStorage : utilise
+    Consultation ..> JsonStorage : utilise
+    Ordonnance ..> JsonStorage : utilise

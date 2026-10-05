@@ -1,0 +1,15 @@
+:root { color-scheme: light; --ink: #17212b; --orange: #ed7a32; }
+html { scroll-behavior: smooth; }
+body { background: #f2f4f6; color: #17212b; }
+h1 { font-size: 1.875rem; line-height: 2.25rem; font-weight: 600; letter-spacing: -0.025em; }
+h2 { font-size: 1.125rem; line-height: 1.75rem; font-weight: 600; }
+h3 { font-size: 1rem; line-height: 1.5rem; font-weight: 600; }
+::selection { background: #ffd7bd; color: #4c260d; }
+input, textarea, select { caret-color: var(--orange); }
+button, a, input, textarea, select { -webkit-tap-highlight-color: transparent; }
+a { text-underline-offset: 3px; }
+.sidebar-link { color: #b7c0c8; }
+.sidebar-link:hover, .sidebar-link[aria-current="page"] { background: #29343e; color: #fff; }
+.sidebar-link[aria-current="page"] { box-shadow: inset 3px 0 0 var(--orange); }
+@media (max-width: 767px) { #sidebar { position: absolute; z-index: 20; inset: 64px auto auto 12px; width: min(280px, calc(100vw - 24px)); border-radius: 16px; box-shadow: 0 18px 42px #10182044; } }
+@media (min-width: 640px) { h1 { font-size: 2.25rem; line-height: 2.5rem; } }

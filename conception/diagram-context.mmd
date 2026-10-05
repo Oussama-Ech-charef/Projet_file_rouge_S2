@@ -1,0 +1,6 @@
+flowchart LR
+    staff[Personnel du cabinet]
+    system["Cabinet médical / Téléconsultation"]
+    json[("Fichiers JSON locaux")]
+    staff -->|gère patients, spécialités, consultations et ordonnances| system
+    system -->|lit et écrit via l’API PHP| json

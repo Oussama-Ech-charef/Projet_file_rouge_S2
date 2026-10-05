@@ -1,0 +1,23 @@
+sequenceDiagram
+    actor personnel as Personnel du cabinet
+    participant interface as Interface web
+    participant api as API PHP
+    participant modele as Classe métier
+    participant json as Fichier JSON
+
+    personnel->>interface: ouvre une liste ou un formulaire
+    interface->>api: demande les données en GET
+    api->>modele: lit les enregistrements
+    modele->>json: charge le fichier JSON
+    json-->>modele: retourne les enregistrements
+    modele-->>api: retourne les données
+    api-->>interface: répond en JSON
+    interface-->>personnel: affiche la liste
+    personnel->>interface: ajoute ou modifie un enregistrement
+    interface->>api: envoie les champs en POST ou PUT
+    api->>modele: valide et enregistre
+    modele->>json: écrit le fichier JSON
+    json-->>modele: confirme l’écriture
+    modele-->>api: retourne l’enregistrement
+    api-->>interface: confirme l’opération
+    interface-->>personnel: affiche un retour et actualise la liste
